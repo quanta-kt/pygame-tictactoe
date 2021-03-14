@@ -51,6 +51,11 @@ class App():
             x, y = pos
             row = int((y - constants.EDGE_BORDER) // (self.board_surface.get_width() / 3))
             col = int((x - constants.EDGE_BORDER) // (self.board_surface.get_height() / 3))
+
+            # Check if cell is occupied
+            if self.board[row][col] != -1:
+                return
+
             self.board[row][col] = self.player_turn
             self.player_turn = 0 if self.player_turn == 1 else 1
             pygame.display.update()
